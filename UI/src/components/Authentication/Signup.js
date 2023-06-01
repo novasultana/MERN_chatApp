@@ -21,9 +21,14 @@ const Signup = () => {
   const [pic, setPic] = useState();
   const [picLoading, setPicLoading] = useState(false);
   const { setUser } = ChatState();
+  function ValidateEmail(mail) {
+    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)) {
+      return true;
+    }
+    return false;
+  }
 
   const submitHandler = async () => {
-    setPicLoading(true);
     if (!name || !email || !password || !confirmpassword) {
       toast({
         title: "Please Fill all the Feilds",
@@ -32,7 +37,6 @@ const Signup = () => {
         isClosable: true,
         position: "bottom",
       });
-      setPicLoading(false);
       return;
     }
     if (password !== confirmpassword) {
@@ -45,6 +49,17 @@ const Signup = () => {
       });
       return;
     }
+    if (!ValidateEmail(email)) {
+      toast({
+        title: "Invalid email",
+        status: "warning",
+        duration: 5000,
+        isClosable: true,
+        position: "bottom",
+      });
+      return;
+    }
+    setPicLoading(true);
     console.log(name, email, password, pic);
     try {
       const config = {
