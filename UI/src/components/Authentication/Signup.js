@@ -51,7 +51,7 @@ const Signup = () => {
         },
       };
       const { data } = await axios.post(
-        "http://localhost:5000/api/user",
+        "https://lets-talk-p538.onrender.com/api/user",
         {
           name,
           email,

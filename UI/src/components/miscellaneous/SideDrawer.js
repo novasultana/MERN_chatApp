@@ -79,7 +79,7 @@ const SideDrawer = () => {
         },
       };
       const { data } = await axios.get(
-        `http://localhost:5000/api/user?search=${search}`,
+        `https://lets-talk-p538.onrender.com/api/user?search=${search}`,
         config
       );
 
@@ -109,7 +109,7 @@ const SideDrawer = () => {
         },
       };
       const { data } = await axios.post(
-        `http://localhost:5000/api/chat`,
+        `https://lets-talk-p538.onrender.com/api/chat`,
         { userId },
         config
       );

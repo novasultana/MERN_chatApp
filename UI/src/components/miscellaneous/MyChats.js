@@ -25,7 +25,10 @@ const MyChats = ({ fetchAgain }) => {
         },
       };
 
-      const { data} = await axios.get("http://localhost:5000/api/chat", config);
+      const { data } = await axios.get(
+        "https://lets-talk-p538.onrender.com/api/chat",
+        config
+      );
       setChats(data);
     } catch (error) {
       toast({
@@ -67,18 +70,15 @@ const MyChats = ({ fetchAgain }) => {
         alignItems="center"
       >
         My Chats
-       <GroupChatModel>
-         <Button
+        <GroupChatModel>
+          <Button
             display="flex"
             fontSize={{ base: "17px", md: "10px", lg: "17px" }}
             rightIcon={<AddIcon />}
           >
             New Group Chat
           </Button>
-
-       </GroupChatModel>
-         
-     
+        </GroupChatModel>
       </Box>
       <Box
         display="flex"
@@ -94,7 +94,9 @@ const MyChats = ({ fetchAgain }) => {
           <Stack overflowY="scroll">
             {chats.map((chat) => (
               <Box
-                onClick={() => {setSelectedChat(chat);}}
+                onClick={() => {
+                  setSelectedChat(chat);
+                }}
                 cursor="pointer"
                 bg={selectedChat === chat ? "#38B2AC" : "#E8E8E8"}
                 color={selectedChat === chat ? "white" : "black"}

@@ -46,7 +46,10 @@ const UpdateGroupChatModal = ({ fetchMessages, fetchAgain, setFetchAgain }) => {
           Authorization: `Bearer ${user.token}`,
         },
       };
-      const { data } = await axios.get(`http://localhost:5000/api/user?search=${search}`, config);
+      const { data } = await axios.get(
+        `https://lets-talk-p538.onrender.com/api/user?search=${search}`,
+        config
+      );
       console.log(data);
       setLoading(false);
       setSearchResult(data);
@@ -74,7 +77,7 @@ const UpdateGroupChatModal = ({ fetchMessages, fetchAgain, setFetchAgain }) => {
         },
       };
       const { data } = await axios.post(
-        `http://localhost:5000/api/chat/rename`,
+        `https://lets-talk-p538.onrender.com/api/chat/rename`,
         {
           chatId: selectedChat._id,
           chatName: groupChatName,
@@ -132,7 +135,7 @@ const UpdateGroupChatModal = ({ fetchMessages, fetchAgain, setFetchAgain }) => {
         },
       };
       const { data } = await axios.post(
-        `http://localhost:5000/api/chat/groupadd`,
+        `https://lets-talk-p538.onrender.com/api/chat/groupadd`,
         {
           chatId: selectedChat._id,
           userId: user1._id,
@@ -177,7 +180,7 @@ const UpdateGroupChatModal = ({ fetchMessages, fetchAgain, setFetchAgain }) => {
         },
       };
       const { data } = await axios.post(
-        `http://localhost:5000/api/chat/groupremove`,
+        `https://lets-talk-p538.onrender.com/api/chat/groupremove`,
         {
           chatId: selectedChat._id,
           userId: user1._id,
@@ -192,7 +195,7 @@ const UpdateGroupChatModal = ({ fetchMessages, fetchAgain, setFetchAgain }) => {
     } catch (error) {
       toast({
         title: "Error Occured!",
-    
+
         // description: error.response.data.message,
         status: "error",
         duration: 5000,
@@ -207,7 +210,11 @@ const UpdateGroupChatModal = ({ fetchMessages, fetchAgain, setFetchAgain }) => {
 
   return (
     <>
-      <IconButton display={{ base: "flex" }} icon={<ViewIcon />} onClick={onOpen} />
+      <IconButton
+        display={{ base: "flex" }}
+        icon={<ViewIcon />}
+        onClick={onOpen}
+      />
 
       <Modal onClose={onClose} isOpen={isOpen} isCentered>
         <ModalOverlay />

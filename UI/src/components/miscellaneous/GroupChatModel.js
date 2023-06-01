@@ -45,7 +45,7 @@ const GroupChatModel = ({ children }) => {
         },
       };
       const { data } = await axios.get(
-        `http://localhost:5000/api/user?search=${search}`,
+        `https://lets-talk-p538.onrender.com/api/user?search=${search}`,
         config
       );
       setLoading(false);
@@ -80,7 +80,7 @@ const GroupChatModel = ({ children }) => {
         },
       };
       const { data } = await axios.post(
-        "http://localhost:5000/api/chat/group",
+        "https://lets-talk-p538.onrender.com/api/chat/group",
         {
           name: groupChatName,
           users: JSON.stringify(selectedUsers.map((u) => u._id)),
